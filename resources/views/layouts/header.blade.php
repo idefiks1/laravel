@@ -19,7 +19,7 @@
 			</div>
 			<div class="col-xs-6 col-md-4">
 				<div>
-						<h6>Hello, !</h6>
+						
 						<div><a href = "/"><img src="" id="image" class="img-circle"></a></div>
 						<a href="/auth/logout"><h6><font>Logout</font></h6></a>
 				</div>
