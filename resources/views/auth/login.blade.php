@@ -17,7 +17,7 @@ Password:<br> <input type="password" name="password"><br>
             <label>
                 <p>E-mail</p>
             </label>
-                <p><input type="text" name="email" class="form-control" id="login" placeholder="Login"></p>
+                <p><input type="text" name="email" class="form-control" id="login" placeholder="E-mail"></p>
             <label>
                 <p>Password</p>
             </label>

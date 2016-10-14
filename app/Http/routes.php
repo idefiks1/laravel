@@ -21,7 +21,8 @@ Route::post('auth/login', 'Auth\AuthController@postLogin');
 Route::get('auth/logout', 'Auth\AuthController@logout');
 Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
-
+Route::get('timeline', 'timeline@take');
+Route::get('graphic', 'graphic@graph');
 Route::group(['prefix'=>'admin','middleware'=>'auth'], function()
 {
      Route::get('/', function()
@@ -29,3 +30,9 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'], function()
          echo "Добро пожаловать админ!";
      });
 });
+/*
+Route::get('show', function()
+     {
+         return "Hello!";
+     });
+*/
