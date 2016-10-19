@@ -4,9 +4,9 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use \App\Classes\Curl;
-use \App\http\Controllers\online;
-
-class UserVK extends Command
+use \App\http\Controllers\Online;
+use \App\http\Controllers\VkId;
+class UserVk extends Command
 {
    
     
@@ -15,20 +15,21 @@ class UserVK extends Command
      *
      * @var string
      */
-    protected $signature = 'vk:check';
+    protected $signature = 'vk:check {login} {password}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Check vk status';
 
     /**
      * Create a new command instance.
      *
      * @return void
      */
+    
     public function __construct()
     {
         parent::__construct();
@@ -92,22 +93,22 @@ class UserVK extends Command
 
     public function checkHash($postAuth)
     {
-            preg_match('/Location\: (.*)/s', $postAuth, $postAuthLocation);
+        preg_match('/Location\: (.*)/s', $postAuth, $postAuthLocation);
             
-            if(!preg_match('/\_\_q\_hash=/s', $postAuthLocation[1])) 
-            {
-                echo 'Authirization failed <br /> <br />'.$postAuth;
-                exit;
-            }
-            return $postAuthLocation;
+        if(!preg_match('/\_\_q\_hash=/s', $postAuthLocation[1])) 
+        {
+            echo 'Authirization failed <br /> <br />'.$postAuth;
+            exit;
+        }
+        return $postAuthLocation;
     }
 
     public function handle()
     {
        
         $curl = new Curl();
-        $login = 'idefiks1@rambler.ru';
-        $password = 'nrkrM9DvX7737483I';
+        $login = $this->argument('login');
+        $password = $this->argument('password');
 
         $getMainPage = $curl->curlConnect('https://vk.com');
         
@@ -115,38 +116,39 @@ class UserVK extends Command
         $ipH = $this->getHash($getMainPage['content'],'ip_h');
         $lgH = $this->getHash($getMainPage['content'],'lg_h');
 
-        $postAuth = $curl->curlConnect('https://login.vk.com/?act=login', array(
+        $postAuth = $curl->curlConnect(
+        'https://login.vk.com/?act=login', array(
         'params' => 'act=login&role=al_frame&_origin='.urlencode('http://vk.com').'&ip_h='.$ipH[1].'&lg_h='.$lgH[1].'&email='.urlencode($login).'&pass='.urlencode($password)
         ));
-        
-       
+               
         $postAuthLocation = $this->checkHash($postAuth['headers']);
         $getAuthLocation = $curl->curlConnect($postAuthLocation[1]);
 
 
-        ///get id from bd
+        $idGet = new VkId();
+        $idArray = $idGet->getId();
         
-        ///
-        $pageIdSerg = 'shmigelsky_s';
-        $pageIdMisha = '16574432';
-
-        $id = $pageIdSerg;
-        if (!intval($id))
+        
+        foreach ($idArray as $value) 
         {
-            $pageId = $id;
-        }
-        else
-        $pageId = 'id'.$id;
-
-        $save = new online();
-        $getPage = $curl->curlConnect('https://vk.com/'.$pageId);
-        $response = $this->checkUser($getPage);
+            $userId = $idGet->getIdUser($value);
             
-        $save->write($response['title'], $response['status'], $response['version']);
+            if (!intval($value))
+            {
+                $pageId = $value;
+            }
+            else
+            $pageId = 'id'.$value;
 
-        $getPage = $curl->curlConnect('https://vk.com/'.$pageId);
-        //$response = $this->checkUser($getPage);
-        //$save->write($response['title'], $response['status'], $response['version']);
-        \Log::Info('Write status '.\Carbon\carbon::now());
+            
+          
+         
+            $save = new Online();
+            $getPage = $curl->curlConnect('https://vk.com/'.$pageId);
+            $response = $this->checkUser($getPage);
+            $save->write($response['title'], $response['status'], $response['version'], $userId[0]);
+
+            \Log::Info('Write status '.\Carbon\carbon::now());
+        }
     }
 }

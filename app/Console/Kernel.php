@@ -14,7 +14,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         
-    Commands\UserVK::class,
+    Commands\UserVk::class,
     ];
 
     /**
