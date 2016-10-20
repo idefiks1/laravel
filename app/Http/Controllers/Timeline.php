@@ -12,7 +12,7 @@ class Timeline extends Controller
 	{
 		$saves = DB::table('saves')
                     ->select('user','status','created_at','version')
-                    ->get('user','status','created_at','version');
+                    ->get('user','status','version','created_at');
 		return view('auth/timeline', compact('saves'));
 	}
 }

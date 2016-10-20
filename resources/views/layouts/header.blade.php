@@ -6,7 +6,6 @@
 	<link rel="stylesheet" href="/css/graph.css" type="text/css">
 	<link rel="stylesheet" href="/css/jquery-ui-1.9.2.custom.css" type="text/css">
 	<link rel="stylesheet" href="/css/jquery-ui-1.9.2.custom.min.css" type="text/css">
-
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
  	<script type="text/javascript" src="/js/graph.js"></script>
  	<script src='/js/pickDate.js'></script>
@@ -29,9 +28,9 @@
 			</div>
 			<div class="col-xs-6 col-md-4">
 				<div>
-						<h6>{{{ isset(Auth::user()->name) ? Auth::user()->name : 'You are not logged in!'}}}</h6>
-						<div><a href = "/"><img src="" id="image" class="img-circle"></a></div>
-						<a href="/auth/logout"><h6><font>Logout</font></h6></a>
+					<h6>{{{ isset(Auth::user()->name) ? Auth::user()->name : 'You are not logged in!'}}}</h6>
+					<div><a href = "/"><img src="" id="image" class="img-circle"></a></div>
+					<a href="/auth/logout"><h6><font>Logout</font></h6></a>
 				</div>
 			</div>
 		</header>

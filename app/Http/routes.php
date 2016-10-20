@@ -27,10 +27,5 @@ Route::group(['middleware'=>'auth'], function()
     Route::get('timeline', 'timeline@take');
 	Route::get('graphic', 'graphic@graph');
 	Route::get('getDataTime', 'graphic@getTime');
+	Route::get('getDate/{date}', 'graphic@getTime');
 });
-/*
-Route::get('show', function()
-     {
-         return "Hello!";
-     });
-*/

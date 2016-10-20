@@ -32,14 +32,11 @@
 </div>
 <div class="container-fluid"">
             <div class="row">
-                <div class="col-md-3 col-md-offset-3">
-                   
-                         
+                <div class="col-md-3 col-md-offset-3">        
                 </div>
                 <div class="col-md-3 col-md-offset-3">
                 </div>
                 <div class="col-md-3 col-md-offset-3">
-                    
                 </div>
                 <div class="col-md-3 col-md-offset-3">
                     <h4><a href="timeline">Timeline</a></h4>
