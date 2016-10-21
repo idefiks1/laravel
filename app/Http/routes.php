@@ -24,7 +24,9 @@ Route::post('auth/register', 'Auth\AuthController@postRegister');
 
 Route::group(['middleware'=>'auth'], function()
 {
-    Route::get('timeline', 'timeline@take');
+	Route::get('timeline/take', 'timeline@take');
+    Route::get('timeline', 'timeline@categories');
+    Route::get('data/{id}/{status}', 'timeline@data');
 	Route::get('graphic', 'graphic@graph');
 	Route::get('getDataTime', 'graphic@getTime');
 	Route::get('getDate/{date}', 'graphic@getTime');

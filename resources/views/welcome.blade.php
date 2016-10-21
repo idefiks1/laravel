@@ -14,38 +14,37 @@
     <div class="row">
         <header class="navbar navbar-static-top bs-docs-nav" id="top">
             <div class="col-xs-6 col-md-4">
+                
             </div>
             <div class="col-xs-6 col-md-4">
-            <a href="/"><h3><font>Comments</font></h3></a>
+                <a href="/"><h3><font>Comments</font></h3></a>
             </div>
             <div class="col-xs-6 col-md-4">
                 <div>
-                        <h6>{{{ isset(Auth::user()->name) ? Auth::user()->name : 'You are not logged in!'}}}</h6>
-                        <div>
-                            <a href = "/"><img src="" id="image" class="img-circle"></a>
-                        </div>
-                        <a href="/auth/logout"><h6><font>Logout</font></h6></a>
+                    <h6>{{{ isset(Auth::user()->name) ? Auth::user()->name : 'You are not logged in!'}}}</h6>
+                    <div><a href = "/"><img src="" id="image" class="img-circle"></a></div>
+                    <a href="/auth/logout"><h6><font>Logout</font></h6></a>
                 </div>
             </div>
         </header>
     </div>
 </div>
 <div class="container-fluid"">
-            <div class="row">
-                <div class="col-md-3 col-md-offset-3">        
-                </div>
-                <div class="col-md-3 col-md-offset-3">
-                </div>
-                <div class="col-md-3 col-md-offset-3">
-                </div>
-                <div class="col-md-3 col-md-offset-3">
-                    <h4><a href="timeline">Timeline</a></h4>
-                    <h4><a href="graphic">Graphic</a></h4>
-                    <h4><a href="/auth/login">Login</a></h4>
-                    <h4><a href="/auth/register">Registration</a></h4>
-                </div>
-            </div>
+    <div class="row">
+        <div class="col-md-3 col-md-offset-3">
         </div>
+        <div class="col-md-3 col-md-offset-3">
+        </div>
+        <div class="col-md-3 col-md-offset-3">
+        </div>
+        <div class="col-md-3 col-md-offset-3">
+            <h4><a href="timeline">Timeline</a></h4>
+            <h4><a href="graphic">Graphic</a></h4>
+            <h4><a href="/auth/login">Login</a></h4>
+            <h4><a href="/auth/register">Registration</a></h4>
+        </div>
+    </div>
+</div>
 <div class="container-fluid">   
     <div class="row">
         <footer>

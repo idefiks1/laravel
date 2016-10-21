@@ -34,14 +34,6 @@ class Graphic extends Controller
                         ->where('idUser','=',$id)
                         ->groupBy('h')
                         ->lists('c','h');
-            $time = DB::table('saves')
-                        ->select(DB::raw('count(*) as c, HOUR(created_at) as h'))
-                        ->where('status', '=', 'Online')
-                        ->whereDate('created_at', 'like', '2016-10-19%')
-                        ->where('idUser','=',$id)
-                        ->groupBy('h')
-                        ->lists('h');
-
             $name = $value;
             $r = strval(mt_rand(0,255)); 
             $g = strval(mt_rand(0,255));
