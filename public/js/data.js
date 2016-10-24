@@ -1,8 +1,21 @@
 $( document ).ready(function() 
 {
+	
 	$('#example').DataTable(     { "ajax": 'data/'
     				} );
+    
+    $("#clear").click(
+    function()
+        {
+            $('#example').DataTable().destroy();
+            $('#example').DataTable(     { "ajax": 'data/'
+                    } );
+        });
+
+
+
 	$("#submit").click(
+
     function()
     {
     	var dataTable = $('#example').DataTable();
@@ -16,8 +29,8 @@ $( document ).ready(function()
     	var name = document.getElementById('name');
     	var id = name.value;
 
-    	var status = document.getElementById('status');
-    	var statusTake = status.value;
+    	//var status = document.getElementById('status');
+    	//var statusTake = status.value;
 
     	var version = document.getElementById('version');
     	var versionTake = version.value;
@@ -25,21 +38,21 @@ $( document ).ready(function()
 
         console.log(id);
         console.log(datePick);
-        console.log(statusTake);
+        //console.log(statusTake);
         console.log(versionTake);
 
                
         $.ajax(
         {
             type: 'GET',
-            url: 'data/'+id+'/'+statusTake+'/'+datePick+'/'+versionTake,
-            data: {id:id, statusTake: statusTake, datePick:datePick,versionTake:versionTake},
+            url: 'data/'+id+'/'+datePick + '/' + versionTake,
+            data: {id:id, datePick:datePick, versionTake:versionTake},
             dataType: 'json',
             success: function (response)
             {
             	
             	dataTable.destroy();           	
-            	$('#example').DataTable(     { "ajax": 'data/'+id+'/'+statusTake+'/'+datePick+'/'+versionTake
+            	$('#example').DataTable(     { "ajax": 'data/'+id+'/'+datePick +'/'+ versionTake
     				} );    
                              
             }

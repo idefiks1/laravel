@@ -20,40 +20,38 @@ class Timeline extends Controller
         return $js; 
 	}
 
-	public function data($id, $status, $datePick, $version)
+	public function data($id=NULL, $datePick=NULL, $version=NULL)
 	{
-		$saves = Saves::
-        select('idUser','user','created_at','status','version')
-        ->where('idUser', '=', $id)
-        ->where('status', 'like', $status.'%')
-        ->where('created_at', 'like', $datePick.'%')
-        ->where('version', '=', $version)
-        ->get('idUser','user','created_at','status','version')->toArray();
-        $json['data'] = [];
-        foreach ($saves as $save) 
-        {
-           	$json['data'][]=[$save['user'],$save['created_at'],$save['status'],$save['version']];
-       					
-        }
-                    
-       
-        $js = json_encode($json, JSON_NUMERIC_CHECK|JSON_UNESCAPED_UNICODE);
-        return $js;  
-	}
+		$json['data'] = [];
+		if ($id == NULL or $datePick == NULL or $version == NULL)
+		{
+			$saves = Saves::
+	        select('user','created_at','status','version')
+	        ->get('idUser','created_at','user','status','version')->toArray();
+	        foreach ($saves as $save) 
+	        {
+	           	$json['data'][]=[$save['user'],$save['created_at'],$save['status'],$save['version']];				
+	        }
+	        $js = json_encode($json, JSON_NUMERIC_CHECK|JSON_UNESCAPED_UNICODE);
+		}
+		else
+		{
+			$query = Saves::
+	        select('idUser','user','created_at','status','version')
+	        ->where('idUser', '=', $id)
+	        ->where('created_at', 'like', $datePick.'%')
+	        ->where('version', '=', $version);
 
-	public function dataAll()
-	{
-		$saves = Saves::
-        select('user','created_at','status','version')
-        ->get('idUser','created_at','user','status','version')->toArray();
-        $json['data'] = [];
-        foreach ($saves as $save) 
-        {
-           	$json['data'][]=[$save['user'],$save['created_at'],$save['status'],$save['version']];
-       					
-        }
-        $js = json_encode($json, JSON_NUMERIC_CHECK|JSON_UNESCAPED_UNICODE);
-        return $js; 
+			$saves = $query->get('idUser','user','created_at','status','version')->toArray();
+	        foreach ($saves as $save) 
+	        {
+	           	$json['data'][]=[$save['user'],$save['created_at'],$save['status'],$save['version']];			
+	        }
+	                    
+	       
+	        $js = json_encode($json, JSON_NUMERIC_CHECK|JSON_UNESCAPED_UNICODE);
+    	}
+        return $js;  
 	}
 
 	public function categories()

@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-md-10">
             <button id="submit">View</button>
-            
+            <button id="clear">Clear</button></p>
 
 
             <table id="example" class="table table-striped">
@@ -25,10 +25,7 @@
                             </script>  
                         </th>
                         <th>
-                            <select class="form-control" id="status" style="width: 150px">
-                                <option value="online">Online</option>
-                                <option value="offline">offline</option>   
-                            </select>
+                            Status
                         </th>
                         <th>
                             <select class="form-control" id="version" style="width: 150px">

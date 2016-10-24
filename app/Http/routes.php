@@ -26,8 +26,7 @@ Route::group(['middleware'=>'auth'], function()
 {
 	Route::get('timeline/take', 'timeline@take');
     Route::get('timeline', 'timeline@categories');
-    Route::get('data', 'timeline@dataAll');
-    Route::get('data/{id}/{status}/{datePick}/{version}', 'timeline@data');
+    Route::get('data/{id?}/{datePick?}/{version?}', 'timeline@data');
 	Route::get('graphic', 'graphic@graph');
 	Route::get('getDataTime', 'graphic@getTime');
 	Route::get('getDate/{date}', 'graphic@getTime');
