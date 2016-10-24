@@ -8,29 +8,51 @@
 
             <table id="example" class="table table-striped">
             <thead>
-            <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Extn.</th>
-            </tr>
-        </thead>
-        <tfoot>
-            <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Extn.</th>
-            </tr>
-        </tfoot>
-            </table>
-
-
-           
-            
+                <tr>
+                        <th>
+                            <select class="form-control" id="name" style="width: 200px">
+                                @foreach ($categories as $category)
+                                    <option value="{{$category->idUser}}">{{$category->user}}</option>
+                                @endforeach
+                            </select>
+                        </th>
+                        <th> 
+                            <input type="text" class="form-control" id="datepicker" value="10/19/2016" style="width: 150px">
+                            <script type="text/javascript">
+                                $(function(){
+                                    $("#datepicker").datepicker();
+                                });
+                            </script>  
+                        </th>
+                        <th>
+                            <select class="form-control" id="status" style="width: 150px">
+                                <option value="online">Online</option>
+                                <option value="offline">offline</option>   
+                            </select>
+                        </th>
+                        <th>
+                            <select class="form-control" id="version" style="width: 150px">
+                                <option value="desktop">desktop</option>
+                                <option value="mobile">mobile</option>   
+                            </select>
+                        </th>
+                        
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th>Name</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Version</th>
+                    
+                </tr>
+            </tfoot>
+                </table>   
         </div>
         <div class="col-md-2">
-           <h4><a href="graphic">Graphic</a></h4>
+            <h4><a href="timeline">Timeline data</a></h4>
+            <h4><a href="graphic">Graphic</a></h4>
             <h4><a href="/auth/login">Login</a></h4>
             <h4><a href="/auth/register">Registration</a></h4>
         </div>

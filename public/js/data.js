@@ -1,16 +1,13 @@
 $( document ).ready(function() 
 {
-/*	$('#example').DataTable( 
-                {
-        			"data": 'http://laravel.loc/data/6/offline'
-    				} ); 
-
-*/
-
+	$('#example').DataTable(     { "ajax": 'data/'
+    				} );
 	$("#submit").click(
     function()
     {
-/*    	var d = $('#datepicker').val();
+    	var dataTable = $('#example').DataTable();
+
+    	var d = $('#datepicker').val();
         var day = d.substr(0,2);
         var m = d.substr(3,2);
         var y = d.substr(6,4);
@@ -29,22 +26,24 @@ $( document ).ready(function()
         console.log(id);
         console.log(datePick);
         console.log(statusTake);
-        console.log(versionTake);*/
+        console.log(versionTake);
 
-                $('#example').DataTable(     {    			"ajax": 'http://laravel.loc/data/6/offline'
-    				} );    
-/*        $.ajax(
+               
+        $.ajax(
         {
             type: 'GET',
-            url: 'data/'+id+'/'+statusTake,
-            data: {id:id, statusTake: statusTake},
+            url: 'data/'+id+'/'+statusTake+'/'+datePick+'/'+versionTake,
+            data: {id:id, statusTake: statusTake, datePick:datePick,versionTake:versionTake},
             dataType: 'json',
             success: function (response)
             {
-            	console.log(response);
+            	
+            	dataTable.destroy();           	
+            	$('#example').DataTable(     { "ajax": 'data/'+id+'/'+statusTake+'/'+datePick+'/'+versionTake
+    				} );    
                              
             }
-        });*/
-       // return false;
+        });
+        //return false;
     });
 });

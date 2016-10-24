@@ -20,6 +20,7 @@
 	<script type="text/javascript" charset="utf8" src="/js/jquery.dataTables.js"></script>
 	<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
 </head>
+<body>
 <div class="container-fluid"" >
 	<div class="row">
 		<header class="navbar navbar-static-top bs-docs-nav" id="top">
