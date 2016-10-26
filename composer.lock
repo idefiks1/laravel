@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "5a3939843dfa4009d2e0c08b0eb31e6e",
-    "content-hash": "cc272d8ef11dd330f53eca1ea3d333a8",
+    "hash": "b63f5c80141da821b49725f5eaf54972",
+    "content-hash": "ac5fdb0da27759482156506fc8a4fcbc",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -895,6 +895,52 @@
                 "random"
             ],
             "time": "2016-03-18 20:34:03"
+        },
+        {
+            "name": "phpcasperjs/phpcasperjs",
+            "version": "v1.2.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/alwex/php-casperjs.git",
+                "reference": "82456067890bcad7ec48d7c314eb64e6883856df"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/alwex/php-casperjs/zipball/82456067890bcad7ec48d7c314eb64e6883856df",
+                "reference": "82456067890bcad7ec48d7c314eb64e6883856df",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.*",
+                "squizlabs/php_codesniffer": "2.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "GUIDET Alexandre",
+                    "email": "alwex@free.fr"
+                }
+            ],
+            "description": "Simple PHP wrapper for CasperJS",
+            "homepage": "https://github.com/alwex/php-casperjs",
+            "keywords": [
+                "browser",
+                "phpunit",
+                "test"
+            ],
+            "time": "2016-10-13 20:18:05"
         },
         {
             "name": "psr/log",

@@ -50,11 +50,9 @@ $( document ).ready(function()
             dataType: 'json',
             success: function (response)
             {
-            	
             	dataTable.destroy();           	
             	$('#example').DataTable(     { "ajax": 'data/'+id+'/'+datePick +'/'+ versionTake
-    				} );    
-                             
+    				} );                   
             }
         });
         //return false;
