@@ -12,7 +12,8 @@ var links;
 
 
 
-casper.then(function getLinks(){
+casper.then(function getLinks()
+{
 	
     links = this.evaluate(function(){
         var links = document.getElementsByClassName("more");
@@ -20,10 +21,7 @@ casper.then(function getLinks(){
             return link.getAttribute('href');
         });
         return links;
-    });
-
-
-    
+    });  
 
 });
 
@@ -58,7 +56,12 @@ casper.then(function()
             {
 
                 var name = link.substr(22,31);
-                this.capture(name +".png");
+                this.capture(name +".jpg",{
+                top: 100,
+                left: 0,
+                width: 500,
+                height: 300
+    });
 
             });
            
