@@ -1,27 +1,3 @@
-/*
-var casper = require('casper').create();
-
-casper.start('https://auto.ria.com/legkovie/volkswagen/golf/', function() {
-    this.echo(this.getTitle());
-});
-
-
-casper.run();
-*/
-/*
-var mysql = require('mysql');
-var client = mysql.createClient();
-client.host='127.0.0.1';
-client.port= '3306';
-client.user='root';
-client.password='root';
-client.database='laravel';
-
-client.end();
-*/
-
-
-
 var casper = require('casper').create({
     verbose: true,
     logLevel: "debug"
@@ -51,14 +27,8 @@ casper.then(function getLinks(){
 
 });
 
-
-
 var fs = require('fs');
 var myfile = "output.txt";
-
-
-
-
 
 
 casper.then(function()
@@ -68,9 +38,7 @@ casper.then(function()
         self.thenOpen(link,function(a)
         {
             this.echo(this.getCurrentUrl());
-            
-            
-    
+
             var info = this.evaluate(function()
             {
                 var texts = document.querySelectorAll('span.argument');
@@ -78,7 +46,14 @@ casper.then(function()
                     return e.textContent;
                 });
             });
-
+            
+            
+            var js = {};
+            js.url = this.getCurrentUrl();
+            js.info = info;
+            var result = JSON.stringify(js);
+          
+            fs.write(myfile, result, 'w+');
             casper.then(function() 
             {
 
@@ -86,9 +61,6 @@ casper.then(function()
                 this.capture(name +".png");
 
             });
-
-            fs.write(myfile, info + "\n", 'w+');
-            fs.write(myfile, "----------------------------------------------------------------------------------" + "\n", 'w+')
            
         });
 
@@ -98,18 +70,3 @@ casper.then(function()
 
 
 casper.run();
-
-
-
-/*
-var casper = require('casper').create();
-var url = 'http://instagram.com/';
-
-casper.start(url, function() {
-    var js = this.evaluate(function() {
-        return document; 
-    }); 
-    this.echo(js.all[0].outerHTML); 
-});
-casper.run();
-*/
